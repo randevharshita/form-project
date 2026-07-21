@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <form>
+
+        <label>Name</label><br>
+        <input type="text"><br><br>
+
+        <label>Email</label><br>
+        <input type="email"><br><br>
+
+        <label>Phone</label><br>
+        <input type="text"><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+<script src="{{ url_for('static', filename='style.js') }}"></script>
+
+</body>
+</html>
