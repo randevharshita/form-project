@@ -7,18 +7,18 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Deploy to VM
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT }}
+        run: |
+          cd /var/www/html/form-project
 
-          script: |
-            cd /var/www/html/form-project
-            git pull origin main
-            sudo systemctl restart gunicorn
+          git fetch origin
+          git reset --hard origin/main
+
+          source venv/bin/activate
+
+          pip install -r requirements.txt
+
+          sudo systemctl restart gunicorn
